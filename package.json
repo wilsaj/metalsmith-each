@@ -1,0 +1,21 @@
+{
+  "name": "metalsmith-each",
+  "version": "0.0.0",
+  "description": "Apply a function to each file.",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": "git://github.com/wilsaj/metalsmith-each.git",
+  "keywords": [
+    "metalsmith",
+    "plugin",
+    "each"
+  ],
+  "author": "andy wilson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wilsaj/metalsmith-each/issues"
+  },
+  "homepage": "https://github.com/wilsaj/metalsmith-each"
+}
