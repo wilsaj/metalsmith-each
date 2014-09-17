@@ -17,5 +17,12 @@
   "bugs": {
     "url": "https://github.com/wilsaj/metalsmith-each/issues"
   },
-  "homepage": "https://github.com/wilsaj/metalsmith-each"
+  "homepage": "https://github.com/wilsaj/metalsmith-each",
+  "dependencies": {
+    "rimraf": "^2.2.8"
+  },
+  "devDependencies": {
+    "assert-dir-equal": "^1.0.1",
+    "rimraf": "^2.2.8"
+  }
 }

@@ -1,6 +1,7 @@
 'use strict';
 
 var assert = require('assert');
+var equal = require('assert-dir-equal');
 var Metalsmith = require('metalsmith');
 var rimraf = require('rimraf');
 
@@ -8,8 +9,14 @@ var each = require('..');
 
 
 describe('metalsmith-each', function(){
+  before(function(done){
+    rimraf('test/build', function () {
+      done();
+    });
+  });
+
   after(function(done){
-    rimraf('test/fixtures/basic/build', function () {
+    rimraf('test/build', function () {
       done();
     });
   });
@@ -22,6 +29,7 @@ describe('metalsmith-each', function(){
     };
 
     Metalsmith('test/fixtures/basic')
+      .destination('../../build/basic')
       .use(each(function (file, filename) {
         file.uppered = filename.toUpperCase();
       }))
@@ -37,6 +45,7 @@ describe('metalsmith-each', function(){
       .build(function(err){
         if (err) {return done(err);}
         assert.equal(testCount, Object.keys(expected).length);
+        equal('test/fixtures/basic/expected', 'test/build/basic');
         done();
       });
   });
@@ -49,6 +58,7 @@ describe('metalsmith-each', function(){
     };
 
     Metalsmith('test/fixtures/basic-timeout')
+      .destination('../../build/basic-timeout')
       .use(each(function (file, filename, done) {
         setTimeout(function () {
           file.uppered = filename.toUpperCase();
@@ -67,6 +77,7 @@ describe('metalsmith-each', function(){
       .build(function(err){
         if (err) {return done(err);}
         assert.equal(testCount, Object.keys(expected).length);
+        equal('test/fixtures/basic-timeout/expected', 'test/build/basic-timeout');
         done();
       });
   });
