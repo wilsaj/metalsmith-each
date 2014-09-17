@@ -50,7 +50,7 @@ describe('metalsmith-each', function(){
       });
   });
 
-  it('works with timeouts', function(done) {
+  it('works with async functions', function(done) {
     var testCount = 0;
     var expected = {
       'index.md': 'INDEX.MD',
@@ -78,6 +78,34 @@ describe('metalsmith-each', function(){
         if (err) {return done(err);}
         assert.equal(testCount, Object.keys(expected).length);
         equal('test/fixtures/basic-timeout/expected', 'test/build/basic-timeout');
+        done();
+      });
+  });
+
+  it('works with file renames', function(done) {
+    Metalsmith('test/fixtures/basic-changenames')
+      .destination('../../build/basic-changenames')
+      .use(each(function (file, filename) {
+        return filename.replace('.md', '.php');
+      }))
+      .build(function(err){
+        if (err) {return done(err);}
+        equal('test/fixtures/basic-changenames/expected', 'test/build/basic-changenames');
+        done();
+      });
+  });
+
+  it('works with file renames on async functions', function(done) {
+    Metalsmith('test/fixtures/basic-changenames-async')
+      .destination('../../build/basic-changenames-async')
+      .use(each(function (file, filename, done) {
+        setTimeout(function () {
+          done(filename.replace('.md', '.php'));
+        }, 20);
+      }))
+      .build(function(err){
+        if (err) {return done(err);}
+        equal('test/fixtures/basic-changenames-async/expected', 'test/build/basic-changenames-async');
         done();
       });
   });
