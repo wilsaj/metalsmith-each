@@ -1,6 +1,6 @@
 {
   "name": "metalsmith-each",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "Apply a function to each file.",
   "main": "lib/index.js",
   "scripts": {
@@ -23,5 +23,6 @@
     "metalsmith": "^0.11.0",
     "mocha": "^1.21.4",
     "rimraf": "^2.2.8"
-  }
+  },
+  "dependencies": {}
 }
