@@ -1,7 +1,7 @@
 {
   "name": "metalsmith-each",
   "version": "0.1.0",
-  "description": "Apply a function to each file.",
+  "description": "Metalsmith plugin for easily applying a function to each file or filename.",
   "main": "lib/index.js",
   "scripts": {
     "test": "mocha"

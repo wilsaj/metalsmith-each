@@ -1,6 +1,6 @@
 # metalsmith-each
 
-A [Metalsmith](https://github.com/segmentio/metalsmith) plugin that allows you apply a function to each file or filename.
+A [Metalsmith](https://github.com/segmentio/metalsmith) plugin for easily applying a function to each file or filename.
 
 
 ## Installation
