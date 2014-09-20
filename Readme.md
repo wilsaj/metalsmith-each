@@ -1,11 +1,17 @@
 # metalsmith-each
 
-A [Metalsmith](https://github.com/segmentio/metalsmith) plugin for easily applying a function to each file or filename.
+A [Metalsmith](https://github.com/segmentio/metalsmith) plugin for easily
+applying a function to each file or filename.
+
+This offers a simpler API than creating a full metalsmith plugin for the common
+case of iterating over each file individually and doing something to the file or
+filename.
 
 
 ## Installation
 
     $ npm install metalsmith-each
+
 
 ## Usage
 
