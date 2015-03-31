@@ -23,7 +23,7 @@ var each = require('metalsmith-each');
 
 metalsmith.use(
   each(function (file, filename) {
-    file.date = new Date();
+    file.build_date = new Date();
   }
 ));
 
@@ -51,7 +51,7 @@ var each = require('metalsmith-each');
 metalsmith.use(
   each(function (file, filename, done) {
     setTimeout(function () {
-      file.date = new Date();
+      file.build_date = new Date();
       done();
     }, 1000);
   }
