@@ -3,6 +3,7 @@
 var assert = require('assert');
 var equal = require('assert-dir-equal');
 var Metalsmith = require('metalsmith');
+var branch = require('metalsmith-branch');
 var rimraf = require('rimraf');
 
 var each = require('..');
@@ -106,6 +107,37 @@ describe('metalsmith-each', function(){
       .build(function(err){
         if (err) {return done(err);}
         equal('test/fixtures/basic-changenames-async/expected', 'test/build/basic-changenames-async');
+        done();
+      });
+  });
+
+  it('works with empty file lists', function(done) {
+    Metalsmith('test/fixtures/empty')
+      .use(
+        branch('*.nonexistant')
+          .use(each(function (file, filename) {
+            file.uppered = filename.toUpperCase();
+          }))
+      )
+      .build(function(err){
+        if (err) {return done(err);}
+        done();
+      });
+  });
+
+  it('works with empty file lists - async version', function(done) {
+    Metalsmith('test/fixtures/empty')
+      .use(
+        branch('*.nonexistant')
+          .use(each(function (file, filename, done) {
+            setTimeout(function () {
+              file.uppered = filename.toUpperCase();
+              done();
+            }, 20);
+          }))
+      )
+      .build(function(err){
+        if (err) {return done(err);}
         done();
       });
   });
