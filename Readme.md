@@ -79,7 +79,7 @@ If you do need access to global metadata you can access it like this:
 var each = require('metalsmith-each');
 
 metalsmith.use(
-  each(function (file, filename, metadata done) {
+  each(function (file, filename, metadata, done) {
     file.title = file.title || metadata.title;
     done();
   }
