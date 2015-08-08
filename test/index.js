@@ -141,4 +141,17 @@ describe('metalsmith-each', function(){
         done();
       });
   });
+
+  it('allows access to metalsmith metadata', function(done) {
+    Metalsmith('test/fixtures/empty')
+      .metadata({foo: 'bar'})
+      .use(each(function(file, filename, metadata, done){
+        assert.equal(metadata.foo, 'bar');
+        done();
+      }))
+      .build(function(err){
+        if (err) {return done(err);}
+        done();
+      });
+  });
 });
